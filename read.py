@@ -123,9 +123,18 @@ def get_libs(path):
 		output_cells[-1]['area'] = cell['area']
 		output_cells[-1]['output'] = dict()
 		output_cells[-1]['input'] = dict()
+
 		output_cells[-1]['timing'] = dict()
 		output_cells[-1]['internal_power'] = dict()
 		pin_name = filter(lambda x: x[0] == 'pin', cell.keys())
+
+
+		output_cells[-1]['timing_transition_index'] = output_lib['timing_transition_index']
+		output_cells[-1]['power_transition_index'] = output_lib['power_transition_index']
+		output_cells[-1]['timing_capacitance_index'] = output_lib['timing_capacitance_index']
+		output_cells[-1]['power_capacitance_index'] = output_lib['power_capacitance_index']
+		output_cells[-1]['temperature'] = output_lib['temperature']
+		output_cells[-1]['voltage'] = output_lib['voltage']
 		c = 0
 		wrong = False
 		for pin in pin_name:
@@ -136,6 +145,7 @@ def get_libs(path):
 				output_cells[-1]['output'][pin[1]] = pin_conf
 				for timing in pin_conf['timing']:
 					in_pin = re.sub(r'"', '', timing['related_pin'])
+					when = timing.get('when')
 					timing_table = dict()
 					# print(timing.keys())
 					try:
@@ -144,17 +154,19 @@ def get_libs(path):
 						timing_table['fall_transition'] = timing[('fall_transition',  'delay_template_generic_7x7')]['values']
 						timing_table['cell_rise'] = timing[('cell_rise',  'delay_template_generic_7x7')]['values']
 						timing_table['cell_fall'] = timing[('cell_fall',  'delay_template_generic_7x7')]['values']
-						output_cells[-1]['timing'][(in_pin, pin[1])] = timing_table
-					except: 
+						output_cells[-1]['timing'][(in_pin, pin[1], when)] = timing_table
+					except:
 						print('wrong')
 						wrong = True
 				for internal_power in pin_conf['internal_power']:
 					in_pin = re.sub(r'"', '', internal_power['related_pin'])
+					when = internal_power.get('when')
+
 					internal_power_table = dict()
 					try:
 						internal_power_table['rise_power'] = internal_power[('rise_power',  'power_template_generic_7x7')]['values']
 						internal_power_table['fall_power'] = internal_power[('fall_power',  'power_template_generic_7x7')]['values']
-						output_cells[-1]['internal_power'][(in_pin, pin[1])] = internal_power_table
+						output_cells[-1]['internal_power'][(in_pin, pin[1], when)] = internal_power_table
 					except:
 						print('wrong')
 						wrong = True
