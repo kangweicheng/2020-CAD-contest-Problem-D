@@ -205,3 +205,4 @@ def get_libs(path):
 # print(output_cells[0]['internal_power'][('A', 'Z', None)]['rise_power'])
 # print(output_cells[0]['internal_power'][('A', 'Z', None)]['fall_power'])
 
+
