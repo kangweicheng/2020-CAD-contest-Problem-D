@@ -133,6 +133,7 @@ def get_libs(path):
 		output_cells[-1]['power_transition_index'] = output_lib['power_transition_index']
 		output_cells[-1]['timing_capacitance_index'] = output_lib['timing_capacitance_index']
 		output_cells[-1]['power_capacitance_index'] = output_lib['power_capacitance_index']
+		output_cells[-1]['process'] = output_lib['process']
 		output_cells[-1]['temperature'] = output_lib['temperature']
 		output_cells[-1]['voltage'] = output_lib['voltage']
 		c = 0
@@ -175,7 +176,7 @@ def get_libs(path):
 		if wrong:
 			output_cells = output_cells[:-1]
 
-	return output_lib, output_cells
+	return output_cells
 
 
 # output_lib, output_cells = get_libs("lib1_ss0p72vm40c_base_400.tlib")
@@ -197,10 +198,10 @@ def get_libs(path):
 # print(output_cells[0]['input']['B'])
 # print(output_cells[0]['output']['Z']['max_capacitance'])
 # print(output_cells[0]['output']['Z']['function'])
-# print(output_cells[0]['timing'][('A', 'Z')]['fall_transition'])
-# print(output_cells[0]['timing'][('A', 'Z')]['rise_transition'])
-# print(output_cells[0]['timing'][('A', 'Z')]['cell_fall'])
-# print(output_cells[0]['timing'][('A', 'Z')]['cell_rise'])
-# print(output_cells[0]['internal_power'][('A', 'Z')]['rise_power'])
-# print(output_cells[0]['internal_power'][('A', 'Z')]['fall_power'])
+# print(output_cells[0]['timing'][('A', 'Z', None)]['fall_transition'])
+# print(output_cells[0]['timing'][('A', 'Z', None)]['rise_transition'])
+# print(output_cells[0]['timing'][('A', 'Z', None)]['cell_fall'])
+# print(output_cells[0]['timing'][('A', 'Z', None)]['cell_rise'])
+# print(output_cells[0]['internal_power'][('A', 'Z', None)]['rise_power'])
+# print(output_cells[0]['internal_power'][('A', 'Z', None)]['fall_power'])
 

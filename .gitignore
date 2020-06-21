@@ -1,1 +1,4 @@
 *.tlib
+__pycache__/
+*.zip
+*.csv
