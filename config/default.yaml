@@ -2,15 +2,18 @@ DATA:
     fn: 'timing.csv' # timing.csv or power.csv
 HYPERPARAMETER:
     LGBM:
-        boosting_type: 'gbdt' # 'gbdt', 'rf', 'dart', 'goss'
-        objective: 'regression'
-        metric: 'l1'
-        num_leaves: 31
-        learning_rate: 0.05
-        feature_fraction: 0.9
-        bagging_fraction: 0.8
-        bagging_freq: 5
-        verbose: 0
-        epoch: 200
+        boosting_type: ['gbdt', 'dart', 'goss'] # 'gbdt', 'rf', 'dart', 'goss'
+        objective: ['regression']
+        metric: ['l1', 'l2']
+        num_leaves: [31, 15]
+        learning_rate: [0.01, 0.05, 0.1]
+        feature_fraction: [0.041, 0.9]
+        bagging_fraction: [0.331, 0.8]
+        min_data_in_leaf: [80]
+        min_sum_hessian_in_leaf: [10.0]
+        bagging_freq: [5]
+        verbose: [0]
+        epoch: [100]
+        seed: [44000]
 SAVED:
     model_fn: 'saved/model.txt'
