@@ -14,11 +14,11 @@ B05901082 楊晟甫 B05505028 康惟誠
 
 - data/train/
 
-  
+  http://iccad-contest.org/2020/tw/Problem_D/20200414_base_nom_1p0v.7z
 
 - data/test/
 
-  
+  http://iccad-contest.org/2020/tw/Problem_D/alpha_release.zip
 ### 2. Directory
 
 ```
