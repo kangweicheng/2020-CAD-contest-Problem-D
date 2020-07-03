@@ -5,9 +5,20 @@ B05901082 楊晟甫 B05505028 康惟誠
 ### 1. Prerequisites
 
 - basic ML packages: sklearn, pandas, numpy
+
 - pytorch
+
 - lightgbm
 
+- Download the data from the following link and place under the corresponding directory:
+
+- data/train/
+
+  
+
+- data/test/
+
+  
 ### 2. Directory
 
 ```
@@ -34,7 +45,6 @@ B05901082 楊晟甫 B05505028 康惟誠
 ### 3. Usage
 
 To generate processed metadata, please execute the following command:
-
 ```bash
 $ cd data/
 $ python3 preprocess.py
@@ -57,4 +67,5 @@ $ python3 train.py --cfg_path config/timing.yaml
 ````
 After training, you may want to perform testing on some checkpoint
 ```bash
-$ python3 train.py --cfg_path config/timing.yaml
+$ python3 train.py --cfg_path config/timing.yaml --checkpoint your_ckpt_path --eval_only
+```
