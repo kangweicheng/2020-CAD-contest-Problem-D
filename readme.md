@@ -33,13 +33,28 @@ B05901082 楊晟甫 B05505028 康惟誠
 
 ### 3. Usage
 
-To generate processed metadata, please modify the path of metadata and the path of cell libraries in data/preprocess.py and execute:
+To generate processed metadata, please execute the following command:
 
 ```bash
+$ cd data/
 $ python3 preprocess.py
 ```
-
-
-
-
-
+To execute the linear regression example, please execute the following command:
+```bash
+# timing.yaml or power.yaml
+$ python3 linear_regression.py --cfg_path config/timing.yaml
+```
+To execute the lightgbm example, please execute the following command:
+```bash
+# timing.yaml or power.yaml
+# if grid search is desired, please use the grid_search flag
+$ python3 lgbm.py --cfg_path config/timing.yaml --gid_search
+```
+To perform training on our model, please execute the following command:
+```bash
+# timing.yaml or power.yaml
+$ python3 train.py --cfg_path config/timing.yaml
+````
+After training, you may want to perform testing on some checkpoint
+```bash
+$ python3 train.py --cfg_path config/timing.yaml

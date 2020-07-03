@@ -1,5 +1,5 @@
 DATA:
-    fn: 'power.pkl' # timing.csv or power.csv
+    fn: 'timing.pkl' # timing.csv or power.csv
 HYPERPARAMETER:
     LGBM:
         boosting_type: ['gbdt', 'dart', 'goss'] # 'gbdt', 'rf', 'dart', 'goss'
@@ -17,7 +17,7 @@ HYPERPARAMETER:
         seed: [44000]
 SAVED:
     model_fn: 'saved/model.txt'
-    output_dir: 'saved/'
+    output_dir: 'saved/timing/'
 DATALOADER:
     batch_size: 256
     shuffle: True
@@ -27,6 +27,7 @@ MODEL:
     vocab_size: 32
     hidden_size: 64
     pad_length: 32
+    use_function: False
     type: 'NN' # NN or LSTM
 TRAINER:
     n_epochs: 50

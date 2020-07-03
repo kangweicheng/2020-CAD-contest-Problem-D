@@ -8,6 +8,8 @@ import argparse
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import math
+import pickle
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cfg_path', type=str, default='config/default.yaml')
@@ -19,8 +21,8 @@ with open(opt.cfg_path, 'r') as f:
     cfg = yaml.safe_load(f)
 
 def parse_dataset(fn):
-    dataset = pd.read_csv(fn, names=['id', 'ans', 'type', 'transition', \
-        'capacitance', 'process', 'voltage', 'temperature', 'rise_capacitance', 'fall_capacitance'])
+    with open(fn, 'rb') as file:
+        dataset = pickle.load(file).iloc[:, :10]
     # dataset['type'] = dataset['type'].astype('int32')
     return dataset
 
